@@ -44,13 +44,16 @@ export default function RegistrationForm() {
     
     try {
       // সরাসরি fetch use করো (Redux skip করে test)
-      const response = await fetch("http://localhost:5000/api/v1/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
 
       const result = await response.json();
       console.log("📥 Response:", result);
